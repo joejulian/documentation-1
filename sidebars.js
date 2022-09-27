@@ -251,7 +251,7 @@ module.exports = {
             {
               type: "doc",
               label: "Configuring TLS on Kubernetes",
-              id: "security/tls-kubernetes",
+              id: "security/kubernetes-tls",
             },
             {
               type: "doc",
@@ -662,6 +662,11 @@ module.exports = {
           href: "https://doc.crds.dev/github.com/vectorizedio/redpanda",
         },
         "reference/internal-metrics",
+        {
+          type: "doc",
+          label: "Legacy: Configuring TLS on Kubernetes",
+          id: "reference/tls-kubernetes",
+        },
         {
           type: "link",
           label: "Release notes",
