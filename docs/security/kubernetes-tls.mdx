@@ -10,7 +10,7 @@ title: Configuring Redpanda TLS on Kubernetes
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Redpanda supports Transport Layer Security (TLS) encryption on Kubernetes. For certification management, the Redpanda Helm chart lets you use either cert-manager or your own custom cert-manager Issuer.
+Redpanda supports Transport Layer Security (TLS) encryption on Kubernetes. For certificate management, the Redpanda Helm chart uses cert-manager with a self-signed Issuer or your own custom Issuer.
 
 For general security information, see [Redpanda Security on Kubernetes](/docs/security/security-kubernetes).
 
@@ -37,8 +37,10 @@ helm install cert-manager jetstack/cert-manager \
 
 ### Enable TLS
 
+You can enable TLS in the Redpanda Helm chart using either command line flags, or using a yaml file to override default values.
+
 <Tabs>
-  <TabItem value="cli" label="CLI" default>
+  <TabItem value="flags" label="CLI flags" default>
 
 During install or upgrade, enable TLS configuration:
 
@@ -48,7 +50,7 @@ helm upgrade --install redpanda redpanda/redpanda -n redpanda --create-namespace
 ```
 
   </TabItem>
-  <TabItem value="values" label="YAML">
+  <TabItem value="values" label="YAML values">
 
 Create a YAML file containing the values to override from the defaults. For example, in `tls_enable.yaml`:
 
@@ -88,6 +90,8 @@ rpk topic list --tls-enabled --tls-truststore=ca.crt ...
 ```
 
 ## Use Redpanda with a custom Issuer
+
+You may wish to use your own Issuer or ClusterIssuer to take advantage of an ACME certificate provider like Let's Encrypt or to use your own intermetidate certificate authority.
 
 ### Prerequisites
 
