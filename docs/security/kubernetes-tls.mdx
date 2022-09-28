@@ -52,7 +52,9 @@ helm upgrade --install redpanda redpanda/redpanda -n redpanda --create-namespace
   </TabItem>
   <TabItem value="values" label="YAML values">
 
-Create a YAML file containing the values to override from the defaults. For example, in `tls_enable.yaml`:
+Create a YAML file containing the values to override from the defaults.
+
+_**tls_enable.yaml**_
 
 ```yaml
 tls:
@@ -99,7 +101,9 @@ You must have a cert-manager [ClusterIssuer](https://cert-manager.io/docs/concep
 
 ### Enable TLS
 
-Create a YAML file containing the values to override the defaults. For example, in `tls_enable.yaml`:
+Create a YAML file containing the values to override the defaults.
+
+_**tls_enable.yaml**_
 
 ```yaml
 tls:
