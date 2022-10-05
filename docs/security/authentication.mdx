@@ -17,6 +17,10 @@ See also:
 - [Configuring Listeners](../../cluster-administration/listener-configuration)
 - [Writing Custom Deployment Automation](../../deployment/custom-deployment)
 
+:::note
+This page uses the latest recommended Helm chart for configuring security. For information about using the older Redpanda Operator, see [Redpanda Operator](../../reference/redpanda-operator).
+:::
+
 ## Enable authentication
 
 To enable authentication, set `kafka_enable_authorization` to `true`, and specify at least one value for the `superusers` property. This user is used to bootstrap permissions for other users in the cluster. See [Cluster configuration properties](../../cluster-administration/cluster-property-configuration).
@@ -219,7 +223,6 @@ compression.type        producer    DEFAULT_CONFIG
 message.timestamp.type  CreateTime  DEFAULT_CONFIG
 ...
 ```
-See also: [Configuring Redpanda SASL on Kubernetes](../../reference/redpanda-operator/kubernetes-sasl)
 
 ## Configure mTLS with authentication  
 
@@ -306,8 +309,6 @@ pandaproxy_client:
     enabled: true
 // highlight-end
 ```
-
-See also: [Configuring Redpanda mTLS on Kubernetes](../../reference/redpanda-operator/kubernetes-mtls).
 
 ## Disable authentication
 

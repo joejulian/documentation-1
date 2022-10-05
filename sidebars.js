@@ -213,10 +213,10 @@ module.exports = {
       collapsed: true,
       items: [
         "security/encryption",
+        "security/kubernetes-tls",
         "security/authentication",
         "security/authorization",
         "security/iam-roles",
-        "security/kubernetes-tls"
       ],
     },
     {
