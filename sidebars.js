@@ -216,6 +216,7 @@ module.exports = {
         "security/authentication",
         "security/authorization",
         "security/iam-roles",
+        "security/kubernetes-tls"
       ],
     },
     {
@@ -650,11 +651,6 @@ module.exports = {
           ],
         },
         "reference/internal-metrics",
-        {
-          type: "doc",
-          label: "Legacy: Configuring TLS on Kubernetes",
-          id: "reference/tls-kubernetes",
-        },
         {
           type: "link",
           label: "Release notes",
