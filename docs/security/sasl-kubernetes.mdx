@@ -7,9 +7,9 @@ title: Configuring Redpanda SASL on Kubernetes
     <meta name="description" content="Configuring Redpanda SASL on Kubernetes."/>
 </head>
 
-Redpanda supports the SASL/SCRAM authentication method for the Kafka API. The Redpanda helm chart allows you to configure SASL authentication.
+Redpanda supports the SASL/SCRAM authentication method for the Kafka API. The Redpanda Helm chart lets you configure SASL authentication.
 
-For general security information, see [Redpanda Security on Kubernetes](/docs/security/security-kubernetes).
+For general security information, see [Redpanda Security on Kubernetes](/../../security/security-kubernetes).
 
 ## Step 1: Enable SASL
 
@@ -30,7 +30,7 @@ auth:
 In this YAML document, `users` is a list of superusers.
 :::
 
-Upgrade or install, enabling the SASL configuration
+During install or upgrade, enable SASL configuration:
 
 ```bash
 helm upgrade --install redpanda redpanda/redpanda -n redpanda --create-namespace \
@@ -56,7 +56,7 @@ kubectl exec -n redpanda -c redpanda redpanda-0 -- \
 
 The superuser can grant permissions to additional users through access control lists (ACLs). For details on how ACLs function in Redpanda, see the [rpk acl](/docs/reference/rpk/rpk-acl/) documentation.
 
-1. Use the superuser to grant `create` and `describe` permissions to another user for the cluster. You can edit the `rpk acl create` command to grant permissions to specific users or groups:
+1. Use the superuser to grant `create` and `describe` permissions to another user for the cluster. Edit the `rpk acl create` command to grant permissions to specific users or groups:
 
 ```bash
 kubectl exec -n redpanda -c redpanda redpanda-0 -- \
@@ -66,7 +66,7 @@ kubectl exec -n redpanda -c redpanda redpanda-0 -- \
   --user admin --password changeme --sasl-mechanism SCRAM-SHA-256
 ```
 
-2. Optionally, you can use the superuser to grant permissions to the new user for a topic. The following command grants `describe` privileges to a topic Note that if a user has `describe` privileges on a cluster, they do not automatically have `describe` privileges on topics.
+2. Optionally, you can use the superuser to grant permissions to the new user for a topic. The following command grants `describe` privileges to a topic. Note that if a user has `describe` privileges on a cluster, they do not automatically have `describe` privileges on topics.
 
 ```bash
 kubectl exec -n redpanda -c redpanda redpanda-0 -- \
@@ -76,11 +76,11 @@ kubectl exec -n redpanda -c redpanda redpanda-0 -- \
   --user admin --password changeme --sasl-mechanism SCRAM-SHA-256
 ```
 
-## Step 4: Use rpk to interact with Redpanda
+## Step 4: Use `rpk` to interact with Redpanda
 
 Now you can connect to Redpanda with the additional (non-superuser) user and start working with the cluster.
 
-To create a topic, run:
+To create a topic:
 
 ```bash
 kubectl exec -n redpanda -c redpanda redpanda-0 -- \
@@ -88,7 +88,7 @@ kubectl exec -n redpanda -c redpanda redpanda-0 -- \
   --user myuser --password changethispassword --sasl-mechanism SCRAM-SHA-256
 ```
 
-To describe the topic, run:
+To describe the topic:
 
 ```bash
 kubectl exec -n redpanda -c redpanda <cluster_name>-0 -- \
