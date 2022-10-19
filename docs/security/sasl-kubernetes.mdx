@@ -47,7 +47,7 @@ Create users (not superusers) and set passwords for the new users. By default, t
 As a security best practice, you don't want to use the superuser to run commands on the cluster. You can use these additional users to interact with the cluster.
 :::
 
-For each user that you want to create, run:
+To create the user `myuser` with a password `changethispassword`, run:
 
 ```bash
 kubectl exec -n redpanda -c redpanda redpanda-0 -- \
