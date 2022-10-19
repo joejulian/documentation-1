@@ -44,7 +44,7 @@ helm upgrade --install redpanda redpanda/redpanda -n redpanda --create-namespace
 Create users (not superusers) and set passwords for the new users. By default, these users don't have any permissions on the cluster.
 
 :::tip
-As a security best practice, you don't want to use the superuser to run commands on the cluster. You can use these additional users to interact with the cluster.
+As a security best practice, superusers should not run commands on the cluster. Instead, have these additional or new users interact with the cluster.
 :::
 
 To create the user `myuser` with a password `changethispassword`, run:
@@ -84,7 +84,7 @@ When a user is granted `describe` privileges on a cluster, that user is not auto
 
 ## Use rpk to interact with Redpanda
 
-Now you can connect to Redpanda with the additional (non-superuser) user and start working with the cluster.
+Connect to Redpanda with the additional (non-superuser) user and start working with the cluster.
 
 To create a topic:
 
