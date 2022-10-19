@@ -79,7 +79,7 @@ kubectl exec -n redpanda -c redpanda redpanda-0 -- \
 ```
 
 :::note
-If a user has `describe` privileges on a cluster, they don't automatically have `describe` privileges on topics.
+When a user is granted `describe` privileges on a cluster, that user is not automatically granted `describe` privileges on topics.
 :::
 
 ## Use rpk to interact with Redpanda
