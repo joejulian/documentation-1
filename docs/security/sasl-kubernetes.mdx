@@ -60,23 +60,23 @@ The superuser can grant permissions to additional users through access control l
 
 1. Use the superuser to grant `create` and `describe` permissions to another user for the cluster. Edit the `rpk acl create` command to grant permissions to specific users or groups:
 
-```bash
-kubectl exec -n redpanda -c redpanda redpanda-0 -- \
-  rpk acl create --allow-principal User:myuser \
-  --operation create,describe \
-  --cluster \
-  --user admin --password changeme --sasl-mechanism SCRAM-SHA-256
-```
+  ```bash
+  kubectl exec -n redpanda -c redpanda redpanda-0 -- \
+    rpk acl create --allow-principal User:myuser \
+    --operation create,describe \
+    --cluster \
+    --user admin --password changeme --sasl-mechanism SCRAM-SHA-256
+  ```
 
 2. Optionally, you can use the superuser to grant permissions to a new user for a topic. The following command grants `describe` privileges to a topic:
 
-```bash
-kubectl exec -n redpanda -c redpanda redpanda-0 -- \
-  rpk acl create --allow-principal User:myuser \
-  --operation describe \
-  --topic myfirsttopic \
-  --user admin --password changeme --sasl-mechanism SCRAM-SHA-256
-```
+  ```bash
+  kubectl exec -n redpanda -c redpanda redpanda-0 -- \
+    rpk acl create --allow-principal User:myuser \
+    --operation describe \
+    --topic myfirsttopic \
+    --user admin --password changeme --sasl-mechanism SCRAM-SHA-256
+  ```
 
 :::note
 When a user is granted `describe` privileges on a cluster, that user is not automatically granted `describe` privileges on topics.
